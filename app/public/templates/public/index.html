@@ -1,0 +1,15 @@
+{% extends "public/base.html" %}
+{% load static %}
+
+{% block title %}Django Eve Auth{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Django Eve Auth</h1>
+    <p>
+      <a href="{% url 'sso:authorize' %}">
+        <img src="{% static 'img/eve-sso-login-black-large.png' %}" alt="Login with Eve Online">
+      </a>
+    </p>
+  </div>
+{% endblock %}

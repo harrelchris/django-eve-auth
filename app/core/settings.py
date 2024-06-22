@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "dashboard.apps.DashboardConfig",
+    "public.apps.PublicConfig",
     "sso.apps.SsoConfig",
     "users.apps.UsersConfig",
 ]
@@ -108,10 +110,10 @@ SSO_AUTHORIZATION_URL = "https://login.eveonline.com/v2/oauth/authorize/"
 
 SSO_TOKEN_URL = "https://login.eveonline.com/v2/oauth/token"
 
-LOGIN_URL = "index"
+LOGIN_URL = "public:index"
 
-LOGIN_REDIRECT_URL = "index"
+LOGIN_REDIRECT_URL = "dashboard:index"
 
 LOGOUT_URL = "sso:logout"
 
-LOGOUT_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "public:index"
