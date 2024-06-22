@@ -1,0 +1,7 @@
+<h1>Yo!</h1>
+{% if user.is_authenticated %}
+  <p>Welcome, {{ user.username }}</p>
+  <p><a href="{% url 'sso:logout' %}">Logout</a></p>
+{% else %}
+  <a href="{% url 'sso:authorize' %}">Authorize</a>
+{% endif %}

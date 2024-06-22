@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "sso.apps.SsoConfig",
     "users.apps.UsersConfig",
 ]
 
@@ -88,3 +89,23 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
+
+ESI_CALLBACK_URL = env.str("ESI_CALLBACK_URL")
+
+ESI_CLIENT_ID = env.str("ESI_CLIENT_ID")
+
+ESI_SCOPES = env.str("ESI_SCOPES")
+
+ESI_SECRET_KEY = env.str("ESI_SECRET_KEY")
+
+SSO_AUTHORIZATION_URL = "https://login.eveonline.com/v2/oauth/authorize/"
+
+SSO_TOKEN_URL = "https://login.eveonline.com/v2/oauth/token"
+
+LOGIN_URL = "index"
+
+LOGIN_REDIRECT_URL = "index"
+
+LOGOUT_URL = "sso:logout"
+
+LOGOUT_REDIRECT_URL = "index"
