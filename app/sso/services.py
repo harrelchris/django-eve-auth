@@ -39,10 +39,9 @@ def refresh_oauth_token(refresh_token: str) -> dict:
 
 
 def _request_access_token(payload: dict) -> dict:
-    payload_string = urllib.parse.urlencode(payload)
-    payload_bytes = payload_string.encode("utf-8")
+    payload = urllib.parse.urlencode(payload).encode("utf-8")
     request = urllib.request.Request(
-        data=payload_bytes,
+        data=payload,
         headers=_get_basic_authorization_header(),
         method="POST",
         url=settings.SSO_TOKEN_URL,
@@ -54,11 +53,9 @@ def _request_access_token(payload: dict) -> dict:
 
 
 def _get_basic_authorization_header() -> dict:
-    credentials_string = f"{settings.ESI_CLIENT_ID}:{settings.ESI_SECRET_KEY}"
-    credentials_bytes = credentials_string.encode("utf-8")
-    credentials_b64 = base64.urlsafe_b64encode(credentials_bytes)
-    credentials_b64_string = credentials_b64.decode("utf-8")
-    basic_authorization_string = f"Basic {credentials_b64_string}"
+    credentials = f"{settings.ESI_CLIENT_ID}:{settings.ESI_SECRET_KEY}".encode("utf-8")
+    credentials_b64 = base64.urlsafe_b64encode(credentials).decode("utf-8")
+    basic_authorization_string = f"Basic {credentials_b64}"
     return {
         "Authorization": basic_authorization_string,
         "Content-Type": "application/x-www-form-urlencoded",
