@@ -1,7 +1,20 @@
-<h1>Yo!</h1>
-{% if user.is_authenticated %}
-  <p>Welcome, {{ user.username }}</p>
-  <p><a href="{% url 'sso:logout' %}">Logout</a></p>
-{% else %}
-  <a href="{% url 'sso:authorize' %}">Authorize</a>
-{% endif %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Django Eve Auth{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Django Eve Auth</h1>
+    {% if user.is_authenticated %}
+      <p>Welcome, {{ user.username }}!</p>
+      <p><a href="{% url 'sso:logout' %}">Logout</a></p>
+    {% else %}
+      <p>
+        <a href="{% url 'sso:authorize' %}">
+          <img src="{% static 'img/eve-sso-login-black-large.png' %}" alt="Login with Eve Online">
+        </a>
+      </p>
+    {% endif %}
+  </div>
+{% endblock %}
