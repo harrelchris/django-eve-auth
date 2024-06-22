@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "dashboard.apps.DashboardConfig",
+    "esi.apps.EsiConfig",
     "public.apps.PublicConfig",
     "sso.apps.SsoConfig",
     "users.apps.UsersConfig",
