@@ -16,7 +16,7 @@ class Token(models.Model):
 
     @property
     def _is_expired(self):
-        return self.expiration < timezone.now()
+        return self.expiration <= timezone.now()
 
     def _refresh_access_token(self):
         oauth_token = services.refresh_oauth_token(refresh_token=self.refresh_token)
